@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ThemeProvider } from "../components/theme-provider"
+import { ModeToggle } from "../components/mode-toggle"
+import { useState } from "react"
+import AddCategoryInput from "./AddCategoryInput"
+import CategorySelect from "./CategorySelect"
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [categories, setCategories] = useState(["Food", "Travel", "Fun"])
 
+  const addCategory = (newCategory) => {
+    if (!newCategory.trim()) return;
+
+    setCategories((prev) => [...prev, newCategory])
+  }
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <ModeToggle />
+        <h1>Expense tracker</h1>
+
+        <AddCategoryInput onAdd={addCategory} />
+
+        <h2>Select Category</h2>
+
+        <CategorySelect categories={categories} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </ThemeProvider>
   )
 }
 
