@@ -4,11 +4,11 @@ export default function AddCategoryInput ({ onAdd }) {
     const [value, setValue] = useState("");
 
     const handleSubmit = (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    onAdd(value);
-    setValue("");
-  };
+      onAdd(value);
+      setValue("");
+    };
 
   return (
     <form onSubmit={handleSubmit}>
