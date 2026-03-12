@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 export default function AddCategoryInput ({ onAdd }) {
     const [value, setValue] = useState("");
@@ -12,12 +14,14 @@ export default function AddCategoryInput ({ onAdd }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="New category"
-      />
-      <button type="submit">Add</button>
+      <div className="flex">
+        <Input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="New category"
+        />
+        <Button type="submit">Add</Button>
+      </div>
     </form>
   );
 }

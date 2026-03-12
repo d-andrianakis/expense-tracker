@@ -2,14 +2,15 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useState } from "react"
 import AddCategoryInput from "./AddCategoryInput"
-import CategorySelect from "./CategorySelect"
 import AddExpenseInput from "@/components/AddExpenseInput"
 import DisplayExpenses from "@/components/DisplayExpenses"
 import './App.css'
 
+type Expense = { amount: string; category: string };
+
 function App() {
   const [categories, setCategories] = useState(["Food", "Travel", "Fun"])
-  const [expenses, setExpenses] = useState([12,15,20])
+  const [expenses, setExpenses] = useState<Expense[]>([])
 
   const addCategory = (newCategory) => {
     if (!newCategory.trim()) return;
@@ -17,10 +18,9 @@ function App() {
     setCategories((prev) => [...prev, newCategory])
   }
 
-  const addExpense = (newExpense) => {
-    if (!newExpense.trim()) return;
-
-    setExpenses((prev) => [...prev, newExpense])
+  const addExpense = (newExpense: Expense) => {
+    if (!newExpense.amount.trim()) return;
+    setExpenses((prev) => [...prev, newExpense]);
   }
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -29,11 +29,8 @@ function App() {
         <h1>Expense tracker</h1>
 
         <AddCategoryInput onAdd={addCategory} />
-
-        <h2>Select Category</h2>
-
-        <CategorySelect categories={categories} />
-        <AddExpenseInput onAddExpense={addExpense} />
+        
+        <AddExpenseInput onAddExpense={addExpense} categories={categories}/>
         <DisplayExpenses expenses={expenses} />
       </div>
     </ThemeProvider>

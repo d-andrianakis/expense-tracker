@@ -1,11 +1,13 @@
-export default function DisplayExpenses({ expenses }) {
+type Expense = { amount: string; category: string };
+
+export default function DisplayExpenses({ expenses }: { expenses: Expense[] }) {
   return (
-    <select>
-      {expenses.map((cat, index) => (
-        <option key={index} value={cat}>
-          {cat}
-        </option>
+    <ul>
+      {expenses.map((expense, index) => (
+        <li key={index}>
+          {expense.category} — ${expense.amount}
+        </li>
       ))}
-    </select>
+    </ul>
   );
 }
