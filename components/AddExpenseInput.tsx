@@ -1,4 +1,4 @@
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
+import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -9,6 +9,13 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import {
+  Popover,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 import { useState } from "react";
 
@@ -31,37 +38,44 @@ export default function AddExpenseInput({ onAddExpense, categories }: AddExpense
       setSelectedCategory("");
     };
     return (
-        <>
-        <h2 className="pt-5">Select Category</h2>
-        <form onSubmit={handleExpenseSubmit}>
-            <div>
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                    <SelectTrigger className="w-full" style={{ color: 'black' }}>
-                        <SelectValue placeholder="Select Category"/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup>
-                        {categories.map((cat, index) => (
-                            <SelectItem key={index} value={cat}>
-                            {cat}
-                            </SelectItem>
-                        ))}
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-                <Field className="pt-3">
-                    <FieldLabel htmlFor="input-field-expense">Expense amount</FieldLabel>
-                    <Input
-                        id="input-field-expense"
-                        type="text"
-                        placeholder="Expense amount"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                </Field>
-            </div>
-            <Button type="submit">Add</Button>
-        </form>
-        </>
+        <Popover>
+            <PopoverTrigger asChild>
+                <Button variant="outline" style={{color: 'black'}} className="w-full">Add Expense</Button>
+            </PopoverTrigger>
+            <PopoverContent>
+                <PopoverHeader>
+                <PopoverTitle>Add Expense</PopoverTitle>
+                </PopoverHeader>
+                <form onSubmit={handleExpenseSubmit}>
+                    <div>
+                        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                            <SelectTrigger className="w-full" style={{ color: 'black' }}>
+                                <SelectValue placeholder="Select Category"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                {categories.map((cat, index) => (
+                                    <SelectItem key={index} value={cat}>
+                                    {cat}
+                                    </SelectItem>
+                                ))}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                        <Field className="pt-3">
+                            <FieldLabel htmlFor="input-field-expense">Expense amount</FieldLabel>
+                            <Input
+                                id="input-field-expense"
+                                type="text"
+                                placeholder="Expense amount"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                            />
+                        </Field>
+                    </div>
+                    <Button type="submit" className="mt-3">Add</Button>
+                </form>
+            </PopoverContent>
+        </Popover>
     )
 }

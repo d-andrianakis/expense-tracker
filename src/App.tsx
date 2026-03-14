@@ -25,9 +25,11 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Layout>
-        <AddCategoryInput onAdd={addCategory} />
-        <div className="w-1/2">
+        <div className="w-1/4">
+          <AddCategoryInput onAdd={addCategory} />
           <AddExpenseInput onAddExpense={addExpense} categories={categories}/>
+        </div>
+        <div className="w-3/4">  
           <DisplayExpenses expenses={expenses} />
         </div>
       </Layout>

@@ -21,10 +21,10 @@ export default function AddCategoryInput ({ onAdd }) {
     };
 
   return (
-    <div className="w-1/2 flex pt-7 justify-center">
+    <div className="flex pb-2 justify-center">
       <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" style={{color: 'black'}}>Add Category</Button>
+        <Button variant="outline" style={{color: 'black'}} className="w-full">Add Category</Button>
       </PopoverTrigger>
       <PopoverContent>
         <PopoverHeader>
