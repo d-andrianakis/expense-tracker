@@ -12,7 +12,7 @@ export default function Layout({ children }: LayoutProps) {
                 <h1 className="text-2xl font-bold">Expense tracker</h1>
                 <ModeToggle />
             </header>
-            <main className="flex-1 p-4">
+            <main className="flex flex-1 p-4">
                 {children}
             </main>
         </div>

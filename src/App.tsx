@@ -26,8 +26,10 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Layout>
         <AddCategoryInput onAdd={addCategory} />
-        <AddExpenseInput onAddExpense={addExpense} categories={categories}/>
-        <DisplayExpenses expenses={expenses} />
+        <div className="w-1/2">
+          <AddExpenseInput onAddExpense={addExpense} categories={categories}/>
+          <DisplayExpenses expenses={expenses} />
+        </div>
       </Layout>
     </ThemeProvider>
   )
