@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/mode-toggle"
+import Layout from "./layout.tsx"
 import { useState } from "react"
 import AddCategoryInput from "./AddCategoryInput"
 import AddExpenseInput from "@/components/AddExpenseInput"
@@ -24,15 +24,11 @@ function App() {
   }
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div>
-        <ModeToggle />
-        <h1>Expense tracker</h1>
-
+      <Layout>
         <AddCategoryInput onAdd={addCategory} />
-        
         <AddExpenseInput onAddExpense={addExpense} categories={categories}/>
         <DisplayExpenses expenses={expenses} />
-      </div>
+      </Layout>
     </ThemeProvider>
   )
 }
