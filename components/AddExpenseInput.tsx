@@ -40,7 +40,7 @@ export default function AddExpenseInput({ onAddExpense, categories }: AddExpense
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button variant="outline" style={{color: 'black'}} className="w-full">Add Expense</Button>
+                <Button variant="outline" className="w-full">Add Expense</Button>
             </PopoverTrigger>
             <PopoverContent>
                 <PopoverHeader>
@@ -49,7 +49,7 @@ export default function AddExpenseInput({ onAddExpense, categories }: AddExpense
                 <form onSubmit={handleExpenseSubmit}>
                     <div>
                         <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                            <SelectTrigger className="w-full" style={{ color: 'black' }}>
+                            <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select Category"/>
                             </SelectTrigger>
                             <SelectContent>
