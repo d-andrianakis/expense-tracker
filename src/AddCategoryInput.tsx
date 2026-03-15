@@ -36,7 +36,7 @@ export default function AddCategoryInput ({ onAdd }: { onAdd: (category: string)
               onChange={(e) => setValue(e.target.value)}
               placeholder="New category"
             />
-            <Button type="submit">Add</Button>
+            <Button type="submit" variant="destructive" className="ml-2">Add</Button>
           </div>
         </form>
       </PopoverContent>
