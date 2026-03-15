@@ -73,7 +73,7 @@ export default function AddExpenseInput({ onAddExpense, categories }: AddExpense
                             />
                         </Field>
                     </div>
-                    <Button variant="secondary" type="submit" className="mt-3">Add</Button>
+                    <Button variant="secondary" type="submit" className="mt-3 mr-2">Add</Button>
                 </form>
             </PopoverContent>
         </Popover>
