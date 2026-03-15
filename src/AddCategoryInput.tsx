@@ -4,16 +4,15 @@ import { Button } from "@/components/ui/button"
 import {
   Popover,
   PopoverContent,
-  PopoverDescription,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export default function AddCategoryInput ({ onAdd }) {
+export default function AddCategoryInput ({ onAdd }: { onAdd: (category: string) => void }) {
     const [value, setValue] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       onAdd(value);

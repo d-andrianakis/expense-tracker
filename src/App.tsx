@@ -12,7 +12,7 @@ function App() {
   const [categories, setCategories] = useState(["Food", "Travel", "Fun"])
   const [expenses, setExpenses] = useState<Expense[]>([])
 
-  const addCategory = (newCategory) => {
+  const addCategory = (newCategory: string) => {
     if (!newCategory.trim()) return;
 
     setCategories((prev) => [...prev, newCategory])
